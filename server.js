@@ -14,6 +14,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/", (req, res) => {
+    res.send("Heisenberg API is live! Use POST /api/search");
+});
+
 app.post("/api/search", async (req, res) => {
     const { query } = req.body;
 
