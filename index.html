@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heisenberg AI Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heisenberg AI Search</h1>
+    <input type="text" id="query" placeholder="Ask Heisenberg something...">
+    <button onclick="search()">Search</button>
+    <div id="response"></div>
+
+    <script>
+        async function search() {
+            const query = document.getElementById("query").value;
+            const responseDiv = document.getElementById("response");
+            responseDiv.innerHTML = "Loading...";
+            
+            try {
+                const response = await fetch("https://heisenberg-api.onrender.com/api/search", {  // Change this to your actual Render URL
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query })
+                });
+
+                const data = await response.json();
+                responseDiv.innerHTML = `<strong>Heisenberg:</strong> ${data.reply}`;
+            } catch (error) {
+                responseDiv.innerHTML = "Error fetching response.";
+            }
+        }
+    </script>
+</body>
+</html>
+
