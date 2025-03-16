@@ -9,12 +9,17 @@ app.use(express.json());
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+app.use((req, res, next) => {
+    console.log(`Incoming request: ${req.method} ${req.url}`);
+    next();
+});
+
 app.post("/api/search", async (req, res) => {
     const { query } = req.body;
 
     try {
         const response = await openai.chat.completions.create({
-            model: "gpt-4-turbo",
+            model: "gpt-4o-mini",
             messages: [{ role: "system", content: "You are Heisenberg, a knowledgeable assistant." },
                        { role: "user", content: query }],
         });
