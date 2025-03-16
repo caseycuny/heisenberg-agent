@@ -3,43 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heisenberg AI Search</title>
+    <title>Heisenberg: AP Chem Tutor</title>
     <style>
         body {
+            background-color: #ADD8E6; /* Light Blue Background */
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            width: 150px;
+            margin: 20px auto;
+            display: block;
+        }
+        .container {
+            margin-top: 20px;
         }
         input {
-            width: 60%;
             padding: 10px;
+            width: 300px;
             font-size: 16px;
+            margin-bottom: 10px;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #004494;
         }
         #response {
             margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .footer {
+            margin-top: 50px;
             padding: 20px;
-            border: 1px solid #ddd;
-            display: inline-block;
-            width: 60%;
+            border-top: 2px solid #000;
+        }
+        .footer a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
+        .footer img {
+            width: 24px;
+            vertical-align: middle;
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Heisenberg AI Search</h1>
-    <input type="text" id="query" placeholder="Ask Heisenberg something...">
-    <button onclick="search()">Search</button>
-    <div id="response"></div>
-
+    <img src="Heisenberg Logo.png" alt="Heisenberg Logo" class="logo">
+    <h1>Heisenberg: AP Chem Tutor</h1>
+    
+    <div class="container">
+        <input type="text" id="query" placeholder="Ask Heisenberg something...">
+        <button onclick="search()">Search</button>
+        <div id="response"></div>
+    </div>
+    
     <script>
         async function search() {
             const query = document.getElementById("query").value;
             const responseDiv = document.getElementById("response");
             responseDiv.innerHTML = "Loading...";
-            
+
             try {
                 const response = await fetch("https://heisenberg-agent.onrender.com/api/search", {
                     method: "POST",
@@ -54,6 +92,15 @@
             }
         }
     </script>
+
+    <div class="footer">
+        <a href="https://www.caseycuny.com" target="_blank">Website</a> |
+        <a href="https://www.linkedin.com/in/casey-cuny" target="_blank">
+            <img src="LinkedIn_logo_initials.png" alt="LinkedIn">LinkedIn</a> |
+        <a href="https://www.instagram.com/ccuny/" target="_blank">
+            <img src="Instagram_icon.png" alt="Instagram">Instagram</a>
+    </div>
 </body>
 </html>
+
 
